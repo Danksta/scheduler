@@ -13,12 +13,17 @@ let rec_tz = input("Enter recruiter's timezone")
 let rec_index = tz.index(int(rec_tz))
 let rec_index_copy = rec_index
 let hours = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-let can_slot = [None for i in range(144)]
-let rec_slot = [None for i in range(144)]
-let temp=[]
+let can_slot  = new Array();
+for (i = 0; i < 144; i++) {
+    can_slot[i] = NaN;
+}
+let rec_slot = new Array();
+for (i = 0; i < 144; i++) {
+    rec_slot[i] = NaN;
+}
 let inp = input("Autofill timeslots of candidate and recruiter? (y/n)")
 
-let bool = [True, False]
+let bool = [true, false]
 if (inp == 'y'){
     for(i=0;i<48;i++){
         can_slot.insert(can_index, random.choice(bool))
@@ -48,11 +53,14 @@ else {
 }
 let index = 0
 inp = input("Time slots w.r.t \n'1' Candidate \n'2' EST \n'3' Recruiter\n  ")
-if(inp=='1'){ index = can_index_copy }
-else if(inp=='3'){ index = rec_index_copy}
+if(inp==='1'){ index = can_index_copy }
+else if(inp==='3'){ index = rec_index_copy}
 print("Time slots free are :")
+
+
+
 for(i,j in zip(can_slot,rec_slot)){
-    if(i == j == False){
+    if(i === j === false){
         if(index<48){ print("previous day ::: "+time[index] + ' to ' + time[index+1])}
         else if(index<96){print("current day ::: "+time[index] + ' to ' + time[index+1])}
         else{print("next day ::: "+time[index] + ' to ' + time[index+1])}
